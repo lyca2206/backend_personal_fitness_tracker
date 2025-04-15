@@ -8,8 +8,8 @@ import java.util.UUID;
 
 @Entity
 @Setter
-@Table(name = "EXERCISE")
-public class ExerciseEntity {
+@Table(name = "WORKOUT")
+public class WorkoutEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ID", unique = true, nullable = false)
@@ -18,12 +18,15 @@ public class ExerciseEntity {
     @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "MEASURE_UNIT", nullable = false)
-    private String measureUnit;
+    @Column(name = "DESCRIPTION")
+    private String description;
 
-    @Column(name = "CALORIES_PER_UNIT", nullable = false)
-    private float caloriesPerUnit;
+    @Column(name = "NOTES")
+    private String notes;
 
-    @OneToMany(mappedBy = "exercise")
+    @OneToMany(mappedBy = "workout")
     private List<WorkoutExerciseEntity> workoutExercises;
+
+    @OneToMany(mappedBy = "workout")
+    private List<LogEntity> logs;
 }
