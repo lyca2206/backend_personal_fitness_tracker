@@ -1,6 +1,6 @@
 package com.lyca2206.backend.personal.fitness.tracker.presentation.controller;
 
-import com.lyca2206.backend.personal.fitness.tracker.application.api.ExerciseService;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.api.ExerciseService;
 import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.CreateExerciseDTO;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

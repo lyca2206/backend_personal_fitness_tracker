@@ -1,7 +1,7 @@
 package com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.adapter;
 
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.User;
-import com.lyca2206.backend.personal.fitness.tracker.application.spi.UserRepository;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.UserRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

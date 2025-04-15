@@ -1,15 +1,15 @@
-package com.lyca2206.backend.personal.fitness.tracker.application.domain.usecase;
+package com.lyca2206.backend.personal.fitness.tracker.application.domain.service;
 
-import com.lyca2206.backend.personal.fitness.tracker.application.api.UserService;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.api.UserService;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.EmailAlreadyRegisteredException;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.UserNotFoundException;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.User;
-import com.lyca2206.backend.personal.fitness.tracker.application.spi.UserRepository;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.UserRepository;
 
-public class UserUseCase implements UserService {
+public class UserServiceProvider implements UserService {
     private final UserRepository userRepository;
 
-    public UserUseCase(UserRepository userRepository) {
+    public UserServiceProvider(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 

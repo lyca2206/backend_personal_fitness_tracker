@@ -1,6 +1,6 @@
 package com.lyca2206.backend.personal.fitness.tracker.presentation.controller;
 
-import com.lyca2206.backend.personal.fitness.tracker.application.api.UserService;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.api.UserService;
 import com.lyca2206.backend.personal.fitness.tracker.configuration.utilities.KeyPairHolder;
 import io.jsonwebtoken.Jwts;
 import lombok.AllArgsConstructor;

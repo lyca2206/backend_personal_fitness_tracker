@@ -1,7 +1,7 @@
 package com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.adapter;
 
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.Exercise;
-import com.lyca2206.backend.personal.fitness.tracker.application.spi.ExerciseRepository;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.ExerciseRepository;
 import com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.entity.ExerciseEntity;
 import com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.repository.ExerciseRepositoryJPA;
 import lombok.AllArgsConstructor;

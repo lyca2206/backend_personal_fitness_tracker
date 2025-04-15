@@ -1,14 +1,14 @@
-package com.lyca2206.backend.personal.fitness.tracker.application.domain.usecase;
+package com.lyca2206.backend.personal.fitness.tracker.application.domain.service;
 
-import com.lyca2206.backend.personal.fitness.tracker.application.api.ExerciseService;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.api.ExerciseService;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.ExerciseAlreadyExistsException;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.Exercise;
-import com.lyca2206.backend.personal.fitness.tracker.application.spi.ExerciseRepository;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.ExerciseRepository;
 
-public class ExerciseUseCase implements ExerciseService {
+public class ExerciseServiceProvider implements ExerciseService {
     private final ExerciseRepository exerciseRepository;
 
-    public ExerciseUseCase(ExerciseRepository exerciseRepository) {
+    public ExerciseServiceProvider(ExerciseRepository exerciseRepository) {
         this.exerciseRepository = exerciseRepository;
     }
 

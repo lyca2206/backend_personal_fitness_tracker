@@ -1,4 +1,4 @@
-package com.lyca2206.backend.personal.fitness.tracker.application.spi;
+package com.lyca2206.backend.personal.fitness.tracker.application.port.spi;
 
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.Exercise;
 

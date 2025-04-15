@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BPFTApplication {
+public class PersonalFitnessTrackerApp {
 	public static void main(String[] args) {
-		SpringApplication.run(BPFTApplication.class, args);
+		SpringApplication.run(PersonalFitnessTrackerApp.class, args);
 	}
 }
