@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.Instant;
+import java.util.Date;
+
 @AllArgsConstructor
 @RestController
 @RequestMapping("/user")
@@ -25,6 +28,12 @@ public class UserController {
         //TODO: userService.signIn();
         return Jwts.builder()
                 .subject("subject")
+                .issuedAt(Date.from(
+                        Instant.now()
+                ))
+                .expiration(Date.from(
+                        Instant.now().plusSeconds(3600)
+                ))
                 .signWith(keyPairHolder.getPrivate())
                 .compact();
     }
