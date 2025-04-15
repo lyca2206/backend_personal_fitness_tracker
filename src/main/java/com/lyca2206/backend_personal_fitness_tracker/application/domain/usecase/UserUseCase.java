@@ -4,7 +4,6 @@ import com.lyca2206.backend_personal_fitness_tracker.application.api.UserService
 import com.lyca2206.backend_personal_fitness_tracker.application.domain.model.Role;
 import com.lyca2206.backend_personal_fitness_tracker.application.domain.model.User;
 import com.lyca2206.backend_personal_fitness_tracker.application.spi.UserRepository;
-import jdk.jshell.spi.ExecutionControl;
 
 import javax.management.InstanceAlreadyExistsException;
 import javax.management.InstanceNotFoundException;

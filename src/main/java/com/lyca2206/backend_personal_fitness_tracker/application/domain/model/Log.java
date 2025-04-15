@@ -48,14 +48,12 @@ public class Log {
                 .append(":")
                 .append("\n\n");
 
-        exerciseLogs.forEach(exerciseLog -> {
-            builder
-                    .append(exerciseLog.workoutExercise().exercise().name())
-                    .append(": ")
-                    .append(exerciseLog.minutes())
-                    .append(" minutes")
-                    .append("\n");
-        });
+        exerciseLogs.forEach(exerciseLog -> builder
+                .append(exerciseLog.workoutExercise().exercise().name())
+                .append(": ")
+                .append(exerciseLog.minutes())
+                .append(" minutes")
+                .append("\n"));
 
         builder
                 .append("\nTotal time: ").append(getTotalTime())
