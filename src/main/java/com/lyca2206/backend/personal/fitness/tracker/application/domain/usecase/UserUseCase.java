@@ -20,7 +20,7 @@ public class UserUseCase implements UserService {
 
         boolean userIsFound = userRepository.existsByEmail(user.getEmail());
         if (userIsFound) {
-            throw new InstanceAlreadyExistsException("The given email already exists in the system");
+            throw new InstanceAlreadyExistsException("The given email is already associated with an user");
         }
 
         userRepository.save(user);
