@@ -26,11 +26,12 @@ public class SecurityConfiguration {
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .addFilterAt(
+                .addFilterAfter(
                         jwtAuthenticationFilter,
                         AnonymousAuthenticationFilter.class
                 )
                 .authorizeHttpRequests(authorization -> authorization
+                        .requestMatchers("/error").permitAll()
                         .requestMatchers("/user/*").permitAll()
                         .anyRequest().authenticated()
                 );
