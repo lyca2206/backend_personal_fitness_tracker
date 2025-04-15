@@ -11,6 +11,7 @@ public class User {
 
     public User(String email, String password) {
         validateEmail(email);
+        validatePassword(password);
 
         this.email = email;
         this.password = password;
@@ -21,6 +22,7 @@ public class User {
 
     public User(String email, String password, String role, String firstName, String lastName) {
         validateEmail(email);
+        validatePassword(password);
         validateRole(role);
         validateName(firstName);
         validateName(lastName);
