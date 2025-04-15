@@ -1,11 +1,10 @@
 package com.lyca2206.backend.personal.fitness.tracker.application.domain.usecase;
 
 import com.lyca2206.backend.personal.fitness.tracker.application.api.UserService;
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.EmailAlreadyRegisteredException;
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.UserNotFoundException;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.User;
 import com.lyca2206.backend.personal.fitness.tracker.application.spi.UserRepository;
-
-import javax.management.InstanceAlreadyExistsException;
-import javax.management.InstanceNotFoundException;
 
 public class UserUseCase implements UserService {
     private final UserRepository userRepository;
@@ -15,24 +14,24 @@ public class UserUseCase implements UserService {
     }
 
     @Override
-    public void signUp(String email, String password, String role, String firstName, String lastName) throws InstanceAlreadyExistsException {
+    public void signUp(String email, String password, String role, String firstName, String lastName) {
         User user = new User(email, password, role, firstName, lastName);
 
         boolean userIsFound = userRepository.existsByEmail(user.getEmail());
         if (userIsFound) {
-            throw new InstanceAlreadyExistsException("The given email is already associated with an user");
+            throw new EmailAlreadyRegisteredException("The given email is already associated with an user");
         }
 
         userRepository.save(user);
     }
 
     @Override
-    public void signIn(String email, String password) throws InstanceNotFoundException {
+    public void signIn(String email, String password) {
         User user = new User(email, password);
         User storedUser = userRepository.findByEmail(user.getEmail());
 
         if (storedUser == null) {
-            throw new InstanceNotFoundException("The given user doesn't exist in the system");
+            throw new UserNotFoundException("The given user doesn't exist in the system");
         }
 
         //TODO.

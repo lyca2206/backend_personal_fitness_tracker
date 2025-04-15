@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.management.InstanceAlreadyExistsException;
-
 @AllArgsConstructor
 @RestController
 @RequestMapping("/exercise")
@@ -17,7 +15,7 @@ public class ExerciseController {
     private final ExerciseService exerciseService;
 
     @PostMapping
-    public void createExercise(@RequestBody CreateExerciseDTO createExerciseDTO) throws InstanceAlreadyExistsException {
+    public void createExercise(@RequestBody CreateExerciseDTO createExerciseDTO) {
         exerciseService.createExercise(
                 createExerciseDTO.name(),
                 createExerciseDTO.measureUnit(),
