@@ -14,7 +14,7 @@ public record ExerciseLog(WorkoutExercise workoutExercise, float minutes) {
 
     private void validateMinutes(float minutes) {
         if (minutes <= 0) {
-            throw new IllegalArgumentException("The minute amount needs to be a positive number");
+            throw new IllegalArgumentException("The minute amount needs to be a non-negative number");
         }
     }
 

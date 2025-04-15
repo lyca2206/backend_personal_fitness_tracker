@@ -11,10 +11,32 @@ public class Log {
     private final LocalDateTime time;
 
     public Log(Workout workout, List<ExerciseLog> exerciseLogs, User user) {
+        validateWorkout(workout);
+        validateExerciseLogs(exerciseLogs);
+        validateUser(user);
+
         this.workout = workout;
         this.exerciseLogs = exerciseLogs;
         this.user = user;
         this.time = LocalDateTime.now();
+    }
+
+    private void validateWorkout(Workout workout) {
+        if (workout == null) {
+            throw new IllegalArgumentException("The given workout must be a non-null value");
+        }
+    }
+
+    private void validateExerciseLogs(List<ExerciseLog> exerciseLogs) {
+        if (exerciseLogs == null) {
+            throw new IllegalArgumentException("The given list of exercise logs must be a non-null value");
+        }
+    }
+
+    private void validateUser(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("The given user must be a non-null value");
+        }
     }
 
     public Workout getWorkout() {

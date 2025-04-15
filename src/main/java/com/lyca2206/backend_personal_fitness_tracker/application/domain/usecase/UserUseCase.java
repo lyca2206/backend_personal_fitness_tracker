@@ -1,7 +1,6 @@
 package com.lyca2206.backend_personal_fitness_tracker.application.domain.usecase;
 
 import com.lyca2206.backend_personal_fitness_tracker.application.api.UserService;
-import com.lyca2206.backend_personal_fitness_tracker.application.domain.model.Role;
 import com.lyca2206.backend_personal_fitness_tracker.application.domain.model.User;
 import com.lyca2206.backend_personal_fitness_tracker.application.spi.UserRepository;
 
@@ -17,7 +16,7 @@ public class UserUseCase implements UserService {
 
     @Override
     public void signUp(String email, String password, String role, String firstName, String lastName) throws InstanceAlreadyExistsException {
-        User user = new User(email, password, Role.valueOf(role), firstName, lastName);
+        User user = new User(email, password, role, firstName, lastName);
 
         boolean userIsFound = userRepository.existsByEmail(user.getEmail());
         if (userIsFound) {
