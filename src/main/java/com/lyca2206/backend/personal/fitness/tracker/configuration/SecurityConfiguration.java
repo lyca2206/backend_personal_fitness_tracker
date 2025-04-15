@@ -40,6 +40,11 @@ public class SecurityConfiguration {
     }
 
     @Bean
+    public JWTAuthenticationFilter jwtAuthenticationFilter(KeyPairHolder keyPairHolder) {
+        return new JWTAuthenticationFilter(keyPairHolder);
+    }
+
+    @Bean
     public KeyPairHolder keyPairHolder (
             @Value("${public.key.location}") Path publicKeyPath,
             @Value("${private.key.location}") Path privateKeyPath
