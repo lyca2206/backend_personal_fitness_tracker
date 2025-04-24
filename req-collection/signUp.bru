@@ -1,0 +1,21 @@
+meta {
+  name: signUp
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://192.168.1.12:8080/api/user/signUp
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "lyca2206@gmail.com",
+    "password": "Lyca2206",
+    "role": "ADMIN",
+    "firstName": "Ariel",
+    "lastName": "Pabón"
+  }
+}

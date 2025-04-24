@@ -1,0 +1,19 @@
+meta {
+  name: createExercise
+  type: http
+  seq: 4
+}
+
+post {
+  url: http://192.168.1.12:8080/api/exercise
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Running",
+    "measureUnit": "KMs",
+    "caloriesPerUnit": "200"
+  }
+}
