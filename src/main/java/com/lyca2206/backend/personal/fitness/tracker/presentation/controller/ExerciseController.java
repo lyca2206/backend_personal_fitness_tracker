@@ -1,7 +1,7 @@
 package com.lyca2206.backend.personal.fitness.tracker.presentation.controller;
 
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.ExerciseService;
-import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.CreateExerciseDTO;
+import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.CreateExerciseRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,11 +15,11 @@ public class ExerciseController {
     private final ExerciseService exerciseService;
 
     @PostMapping
-    public void createExercise(@RequestBody CreateExerciseDTO createExerciseDTO) {
+    public void createExercise(@RequestBody CreateExerciseRequest createExerciseRequest) {
         exerciseService.createExercise(
-                createExerciseDTO.name(),
-                createExerciseDTO.measureUnit(),
-                createExerciseDTO.caloriesPerUnit()
+                createExerciseRequest.name(),
+                createExerciseRequest.measureUnit(),
+                createExerciseRequest.caloriesPerUnit()
         );
     }
 }

@@ -1,6 +1,6 @@
 package com.lyca2206.backend.personal.fitness.tracker.presentation.dto;
 
-public record SignUpDTO(
+public record SignUpRequest(
         String email,
         String password,
         String role,
