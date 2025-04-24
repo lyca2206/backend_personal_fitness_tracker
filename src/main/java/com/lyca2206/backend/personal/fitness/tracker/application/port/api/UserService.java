@@ -1,6 +1,9 @@
 package com.lyca2206.backend.personal.fitness.tracker.application.port.api;
 
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.User;
+
 public interface UserService {
-    void signUp(String email, String password, String role, String firstName, String lastName);
-    String signIn(String email, String password);
+    void signUp(User user);
+
+    String signIn(User user);
 }

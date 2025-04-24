@@ -27,10 +27,9 @@ public class UserServiceProvider implements UserService {
     }
 
     @Override
-    public void signUp(String email, String password, String role, String firstName, String lastName) {
-        User user = new User(email, password, role, firstName, lastName);
-
+    public void signUp(User user) {
         boolean userIsFound = userRepository.existsByEmail(user.getEmail());
+
         if (userIsFound) {
             throw new EmailAlreadyRegisteredException("The given email is already associated with an user");
         }
@@ -39,9 +38,8 @@ public class UserServiceProvider implements UserService {
     }
 
     @Override
-    public String signIn(String email, String password) {
-        User user = new User(email, password);
-        User storedUser = userRepository.findByEmail(email);
+    public String signIn(User user) {
+        User storedUser = userRepository.findByEmail(user.getEmail());
 
         if (storedUser == null) {
             throw new UserNotFoundException("The given user doesn't exist in the system");

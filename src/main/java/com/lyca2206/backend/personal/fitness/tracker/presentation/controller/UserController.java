@@ -1,5 +1,6 @@
 package com.lyca2206.backend.personal.fitness.tracker.presentation.controller;
 
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.User;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.UserService;
 import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignInDTO;
 import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignUpDTO;
@@ -18,19 +19,20 @@ public class UserController {
     @PostMapping("/signUp")
     public void signUp(@RequestBody SignUpDTO signUpDTO) {
         userService.signUp(
-                signUpDTO.email(),
-                signUpDTO.password(),
-                signUpDTO.role(),
-                signUpDTO.firstName(),
-                signUpDTO.lastName()
+                new User(
+                        signUpDTO.email(),
+                        signUpDTO.password(),
+                        signUpDTO.role(),
+                        signUpDTO.firstName(),
+                        signUpDTO.lastName()
+                )
         );
     }
 
     @PostMapping("/signIn")
     public String signIn(@RequestBody SignInDTO signInDTO) {
         return userService.signIn(
-                signInDTO.email(),
-                signInDTO.password()
+                new User(signInDTO.email(), signInDTO.password())
         );
     }
 }
