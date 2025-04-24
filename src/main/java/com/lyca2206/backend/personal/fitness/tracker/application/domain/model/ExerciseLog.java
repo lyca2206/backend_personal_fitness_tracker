@@ -17,12 +17,4 @@ public record ExerciseLog(WorkoutExercise workoutExercise, float minutes) {
             throw new IllegalArgumentException("The minute amount needs to be a non-negative number");
         }
     }
-
-    @Override
-    public String toString() {
-        return "ExerciseLog{" +
-                "workoutExercise=" + workoutExercise +
-                ", minutes=" + minutes +
-                '}';
-    }
 }

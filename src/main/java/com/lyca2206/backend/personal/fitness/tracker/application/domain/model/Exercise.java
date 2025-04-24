@@ -24,13 +24,4 @@ public record Exercise(String name, String measureUnit, float caloriesPerUnit) {
             throw new IllegalArgumentException("The calories per unit needs to be a positive value");
         }
     }
-
-    @Override
-    public String toString() {
-        return "Exercise{" +
-                "name='" + name + '\'' +
-                ", measureUnit='" + measureUnit + '\'' +
-                ", caloriesPerUnit=" + caloriesPerUnit +
-                '}';
-    }
 }

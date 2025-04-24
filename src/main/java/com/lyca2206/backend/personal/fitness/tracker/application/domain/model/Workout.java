@@ -67,14 +67,4 @@ public record Workout(String name, String description, List<WorkoutExercise> wor
 
         return calories;
     }
-
-    @Override
-    public String toString() {
-        return "Workout{" +
-                "name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", workoutExercises=" + workoutExercises +
-                ", notes='" + notes + '\'' +
-                '}';
-    }
 }
