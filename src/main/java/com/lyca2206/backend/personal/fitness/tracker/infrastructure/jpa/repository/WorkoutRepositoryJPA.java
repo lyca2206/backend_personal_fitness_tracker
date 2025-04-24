@@ -8,5 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface WorkoutRepositoryJPA extends JpaRepository<WorkoutEntity, UUID> {
-
+    WorkoutEntity findByName(String name);
 }

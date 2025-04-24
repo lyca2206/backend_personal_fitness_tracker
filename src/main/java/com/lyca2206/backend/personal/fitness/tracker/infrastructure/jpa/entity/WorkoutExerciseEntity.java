@@ -1,13 +1,13 @@
 package com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Setter
+@Data
 @Table(name = "WORKOUT_EXERCISE")
 public class WorkoutExerciseEntity {
     @Id
@@ -19,7 +19,7 @@ public class WorkoutExerciseEntity {
     private int sets;
 
     @Column(name = "UNITS", nullable = false)
-    private int units;
+    private float units;
 
     @ManyToOne
     @JoinColumn(name = "EXERCISE", referencedColumnName = "ID", nullable = false)

@@ -1,15 +1,13 @@
 package com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "STORED_USER")
 public class UserEntity {
     @Id
