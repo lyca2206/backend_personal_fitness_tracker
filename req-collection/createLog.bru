@@ -6,6 +6,20 @@ meta {
 
 post {
   url: http://192.168.1.12:8080/api/log
-  body: none
+  body: json
   auth: inherit
+}
+
+body:json {
+  {
+    "workoutName": "Extreme Running",
+    "exerciseLogs": [
+      {
+        "minutes": "8"
+      },
+      {
+        "minutes": "16"
+      }
+    ]
+  }
 }

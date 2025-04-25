@@ -1,7 +1,9 @@
 package com.lyca2206.backend.personal.fitness.tracker.configuration;
 
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.service.LogServiceProvider;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.service.WorkoutServiceProvider;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.ExerciseService;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.api.LogService;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.UserService;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.service.ExerciseServiceProvider;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.service.UserServiceProvider;
@@ -13,6 +15,10 @@ import com.lyca2206.backend.personal.fitness.tracker.configuration.utilities.Key
 import com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.adapter.WorkoutRepositoryAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.function.Supplier;
 
 @Configuration
 public class BeanConfiguration {
@@ -33,5 +39,15 @@ public class BeanConfiguration {
     @Bean
     public WorkoutService workoutService(WorkoutRepositoryAdapter workoutRepositoryAdapter) {
         return new WorkoutServiceProvider(workoutRepositoryAdapter);
+    }
+
+    @Bean
+    public LogService logService() {
+        return new LogServiceProvider();
+    }
+
+    @Bean
+    public Supplier<List<?>> listSupplier() {
+        return LinkedList::new;
     }
 }
