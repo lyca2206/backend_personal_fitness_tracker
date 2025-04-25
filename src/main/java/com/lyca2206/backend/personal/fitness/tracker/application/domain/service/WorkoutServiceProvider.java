@@ -1,5 +1,6 @@
 package com.lyca2206.backend.personal.fitness.tracker.application.domain.service;
 
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.WorkoutAlreadyExistsException;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.exception.WorkoutNotFoundException;
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.Workout;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.WorkoutService;
@@ -37,5 +38,13 @@ public class WorkoutServiceProvider implements WorkoutService {
     }
 
     @Override
-    public void createWorkout() {}
+    public void createWorkout(Workout workout) {
+        boolean workoutIsFound = workoutRepository.existsByName(workout.name());
+
+        if (workoutIsFound) {
+            throw new WorkoutAlreadyExistsException("The given workout already exists in the system");
+        }
+
+        workoutRepository.save(workout);
+    }
 }

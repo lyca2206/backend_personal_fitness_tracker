@@ -6,5 +6,7 @@ import java.util.List;
 
 public interface WorkoutRepository {
     List<Workout> findAll();
+    void save(Workout workout);
     Workout findByName(String name);
+    boolean existsByName(String name);
 }

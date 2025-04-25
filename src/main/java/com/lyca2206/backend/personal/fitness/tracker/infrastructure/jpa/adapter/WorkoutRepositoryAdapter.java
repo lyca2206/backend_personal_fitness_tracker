@@ -13,20 +13,36 @@ import java.util.List;
 @AllArgsConstructor
 @Component
 public class WorkoutRepositoryAdapter implements WorkoutRepository {
-    private WorkoutRepositoryJPA workoutRepositoryJPA;
-    private WorkoutEntityMapper workoutEntityMapper;
+    private final WorkoutRepositoryJPA workoutRepositoryJPA;
+    private final WorkoutEntityMapper workoutEntityMapper;
 
     @Override
     public List<Workout> findAll() {
         return workoutRepositoryJPA.findAll().stream()
-                .map(workoutEntity ->
-                        workoutEntityMapper.workoutEntityToWorkout(workoutEntity)
-                ).toList();
+                .map(workoutEntityMapper::workoutEntityToWorkout)
+                .toList();
+    }
+
+    @Override
+    public void save(Workout workout) {
+        WorkoutEntity workoutEntity = new WorkoutEntity();
+
+        workoutEntity.setName(workout.name());
+        workoutEntity.setDescription(workout.description());
+        workoutEntity.setWorkoutExercises(List.of());
+        workoutEntity.setNotes(workout.notes());
+
+        workoutRepositoryJPA.save(workoutEntity);
     }
 
     @Override
     public Workout findByName(String name) {
         WorkoutEntity workoutEntity = workoutRepositoryJPA.findByName(name);
         return workoutEntityMapper.workoutEntityToWorkout(workoutEntity);
+    }
+
+    @Override
+    public boolean existsByName(String name) {
+        return workoutRepositoryJPA.existsByName(name);
     }
 }

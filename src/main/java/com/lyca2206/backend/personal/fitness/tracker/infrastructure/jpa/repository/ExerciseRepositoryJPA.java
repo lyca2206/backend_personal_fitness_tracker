@@ -8,5 +8,6 @@ import java.util.UUID;
 
 @Repository
 public interface ExerciseRepositoryJPA extends JpaRepository<ExerciseEntity, UUID> {
+    ExerciseEntity findByName(String name);
     boolean existsByName(String name);
 }

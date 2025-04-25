@@ -11,8 +11,8 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Component
 public class UserRepositoryAdapter implements UserRepository {
-    private UserRepositoryJPA userRepositoryJPA;
-    private PasswordEncoder passwordEncoder;
+    private final UserRepositoryJPA userRepositoryJPA;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public void save(User user) {

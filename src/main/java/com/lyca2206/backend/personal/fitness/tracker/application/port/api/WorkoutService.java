@@ -7,5 +7,5 @@ import java.util.List;
 public interface WorkoutService {
     List<Workout> viewWorkout();
     Workout viewWorkout(String name);
-    void createWorkout();
+    void createWorkout(Workout workout);
 }
