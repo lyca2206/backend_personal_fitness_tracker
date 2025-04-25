@@ -3,48 +3,23 @@ package com.lyca2206.backend.personal.fitness.tracker.application.domain.model;
 import java.util.regex.Pattern;
 
 public class User {
-    private final String email;
-    private final String password;
-    private final Role role;
-    private final String firstName;
-    private final String lastName;
-
-    public User(String email, String password) {
-        validateEmail(email);
-        validatePassword(password);
-
-        this.email = email;
-        this.password = password;
-        this.role = null;
-        this.firstName = null;
-        this.lastName = null;
-    }
+    private String email;
+    private String password;
+    private Role role;
+    private String firstName;
+    private String lastName;
 
     public User(String email, String password, String role, String firstName, String lastName) {
-        validateEmail(email);
-        validatePassword(password);
-        validateRole(role);
-        validateName(firstName);
-        validateName(lastName);
-
-        this.email = email;
-        this.password = password;
-        this.role = Role.valueOf(role);
-        this.firstName = firstName;
-        this.lastName = lastName;
+        setEmail(email);
+        setPassword(password);
+        setRole(role);
+        setFirstName(firstName);
+        setLastName(lastName);
     }
 
-    public User(String email, String role, String firstName, String lastName) {
+    private void setEmail(String email) {
         validateEmail(email);
-        validateRole(role);
-        validateName(firstName);
-        validateName(lastName);
-
         this.email = email;
-        this.password = null;
-        this.role = Role.valueOf(role);
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     private void validateEmail(String email) {
@@ -57,6 +32,11 @@ public class User {
         if (!match) {
             throw new IllegalArgumentException("The given email is invalid: it requires an @ and a domain (.com, .org, etc.)");
         }
+    }
+
+    private void setPassword(String password) {
+        validatePassword(password);
+        this.password = password;
     }
 
     private void validatePassword(String password) {
@@ -75,14 +55,30 @@ public class User {
         }
     }
 
-    private void validateRole(String role) {
+    private void setRole(String role) {
         if (role == null) {
-            throw new IllegalArgumentException("The given role must be a non-null value");
+            this.role = Role.REGULAR;
+        } else {
+            this.role = Role.valueOf(role);
         }
     }
 
+    private void setFirstName(String firstName) {
+        validateName(firstName);
+        this.firstName = firstName;
+    }
+
+    private void setLastName(String lastName) {
+        validateName(lastName);
+        this.lastName = lastName;
+    }
+
     private void validateName(String name) {
-        if (name == null || name.length() < 3) {
+        if (name == null) {
+            return;
+        }
+
+        if (name.length() < 3) {
             throw new IllegalArgumentException("Any of the names should be at least 3 characters long, and it has to be a non-null value");
         }
     }

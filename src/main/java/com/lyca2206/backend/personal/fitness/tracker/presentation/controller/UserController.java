@@ -2,9 +2,11 @@ package com.lyca2206.backend.personal.fitness.tracker.presentation.controller;
 
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.User;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.UserService;
-import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignInRequest;
+import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignInDTO;
 import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignInResponse;
-import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignUpRequest;
+import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.SignUpDTO;
+import com.lyca2206.backend.personal.fitness.tracker.presentation.mapper.SignInDTOMapper;
+import com.lyca2206.backend.personal.fitness.tracker.presentation.mapper.SignUpDTOMapper;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,27 +17,20 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/user")
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
+    private final SignUpDTOMapper signUpDTOMapper;
+    private final SignInDTOMapper signInDTOMapper;
 
     @PostMapping("/signUp")
-    public void signUp(@RequestBody SignUpRequest signUpRequest) {
-        userService.signUp(
-                new User(
-                        signUpRequest.email(),
-                        signUpRequest.password(),
-                        signUpRequest.role(),
-                        signUpRequest.firstName(),
-                        signUpRequest.lastName()
-                )
-        );
+    public void signUp(@RequestBody SignUpDTO signUpDTO) {
+        User user = signUpDTOMapper.SignUpDTOToUser(signUpDTO);
+        userService.signUp(user);
     }
 
     @PostMapping("/signIn")
-    public SignInResponse signIn(@RequestBody SignInRequest signInRequest) {
-        String token = userService.signIn(
-                new User(signInRequest.email(), signInRequest.password())
-        );
-
+    public SignInResponse signIn(@RequestBody SignInDTO signInDTO) {
+        User user = signInDTOMapper.SignInDTOToUser(signInDTO);
+        String token = userService.signIn(user);
         return new SignInResponse(token);
     }
 }
