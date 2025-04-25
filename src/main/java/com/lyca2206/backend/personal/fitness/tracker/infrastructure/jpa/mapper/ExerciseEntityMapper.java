@@ -5,6 +5,6 @@ import com.lyca2206.backend.personal.fitness.tracker.infrastructure.jpa.entity.E
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
-public interface ExerciseMapper {
+public interface ExerciseEntityMapper {
     Exercise ExerciseEntityToExercise(ExerciseEntity exerciseEntity);
 }
