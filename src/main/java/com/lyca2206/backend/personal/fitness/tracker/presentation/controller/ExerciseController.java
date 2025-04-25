@@ -22,7 +22,7 @@ public class ExerciseController {
     }
 
     @GetMapping("/{name}")
-    public Exercise viewExercise(String name) {
+    public Exercise viewExercise(@PathVariable String name) {
         return exerciseService.viewExercise(name);
     }
 
