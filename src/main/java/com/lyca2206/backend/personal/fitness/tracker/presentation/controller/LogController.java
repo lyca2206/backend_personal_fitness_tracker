@@ -35,6 +35,13 @@ public class LogController {
 
     @PostMapping
     public void createLog(@RequestBody LogDTO logDTO) {
+        User user = getAuthenticatedUser();
+        Log log = logDTOMapper.LogDTOToLog(logDTO, listSupplier, user);
+        //TODO.
+        System.out.println(log);
+    }
+
+    private User getAuthenticatedUser() {
         Jwt jwt = (Jwt) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         Map<String, ?> map = jwt.getClaim("user");
 
@@ -43,8 +50,6 @@ public class LogController {
         String firstName = (String) map.get("firstName");
         String lastName = (String) map.get("lastName");
 
-        User user = new User(email, null, role, firstName, lastName);
-        Log log = logDTOMapper.LogDTOToLog(logDTO, listSupplier, user);
-        //TODO.
+        return new User(email, null, role, firstName, lastName);
     }
 }

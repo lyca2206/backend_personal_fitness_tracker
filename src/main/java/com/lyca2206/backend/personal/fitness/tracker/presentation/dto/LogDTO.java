@@ -4,5 +4,5 @@ import java.util.List;
 
 public record LogDTO(
         String workoutName,
-        List<ExerciseLogDTO> exerciseLogs
+        List<Float> exerciseLogs
 ) {}
