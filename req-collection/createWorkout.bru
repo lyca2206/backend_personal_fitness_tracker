@@ -1,0 +1,31 @@
+meta {
+  name: createWorkout
+  type: http
+  seq: 7
+}
+
+post {
+  url: http://192.168.1.12:8080/api/workout
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Extreme Running",
+    "description": "This is a workout in which you run, but extremely!",
+    "workoutExercises": [
+      {
+        "exerciseName": "Running",
+        "sets": "2",
+        "units": "2"
+      },
+      {
+        "exerciseName": "Running",
+        "sets": "1",
+        "units": "1"
+      }
+    ],
+    "notes": "You might tire yourself very hard"
+  }
+}
