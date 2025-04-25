@@ -27,7 +27,7 @@ public class BeanConfiguration {
             UserRepository userRepository,
             PasswordMatcherService passwordEncoderAdapter
     ) {
-        return new UserServiceProvider(3600, keyPairHolder.getPrivate(), userRepository, passwordEncoderAdapter);
+        return new UserServiceProvider(3600, keyPairHolder.getPrivate(), passwordEncoderAdapter, userRepository);
     }
 
     @Bean

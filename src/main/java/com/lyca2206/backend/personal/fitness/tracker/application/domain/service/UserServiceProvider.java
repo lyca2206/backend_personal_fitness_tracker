@@ -16,14 +16,14 @@ import java.util.Date;
 public class UserServiceProvider implements UserService {
     private final long expirationInSeconds;
     private final PrivateKey privateKey;
-    private final UserRepository userRepository;
     private final PasswordMatcherService passwordMatcherService;
+    private final UserRepository userRepository;
 
-    public UserServiceProvider(long expirationInSeconds, PrivateKey privateKey, UserRepository userRepository, PasswordMatcherService passwordMatcherService) {
+    public UserServiceProvider(long expirationInSeconds, PrivateKey privateKey, PasswordMatcherService passwordMatcherService, UserRepository userRepository) {
         this.expirationInSeconds = expirationInSeconds;
         this.privateKey = privateKey;
-        this.userRepository = userRepository;
         this.passwordMatcherService = passwordMatcherService;
+        this.userRepository = userRepository;
     }
 
     @Override
