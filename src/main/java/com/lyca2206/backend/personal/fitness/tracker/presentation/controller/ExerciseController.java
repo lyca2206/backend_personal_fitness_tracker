@@ -5,10 +5,9 @@ import com.lyca2206.backend.personal.fitness.tracker.application.port.api.Exerci
 import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.ExerciseDTO;
 import com.lyca2206.backend.personal.fitness.tracker.presentation.mapper.ExerciseDTOMapper;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @AllArgsConstructor
 @RestController
@@ -16,6 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExerciseController {
     private final ExerciseService exerciseService;
     private final ExerciseDTOMapper exerciseDTOMapper;
+
+    @GetMapping
+    public List<Exercise> viewExercise() {
+        return exerciseService.viewExercise();
+    }
+
+    @GetMapping("/{name}")
+    public Exercise viewExercise(String name) {
+        return exerciseService.viewExercise(name);
+    }
 
     @PostMapping
     public void createExercise(@RequestBody ExerciseDTO exerciseDTO) {
