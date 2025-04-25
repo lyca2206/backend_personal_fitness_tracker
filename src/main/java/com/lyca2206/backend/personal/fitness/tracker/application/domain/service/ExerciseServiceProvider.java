@@ -13,9 +13,7 @@ public class ExerciseServiceProvider implements ExerciseService {
     }
 
     @Override
-    public void createExercise(String name, String measureUnit, float caloriesPerUnit) {
-        Exercise exercise = new Exercise(name, measureUnit, caloriesPerUnit);
-
+    public void createExercise(Exercise exercise) {
         boolean exerciseIsFound = exerciseRepository.existsByName(exercise.name());
         if (exerciseIsFound) {
             throw new ExerciseAlreadyExistsException("The given exercise already exists in the system");

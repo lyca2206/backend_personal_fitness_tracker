@@ -1,5 +1,6 @@
 package com.lyca2206.backend.personal.fitness.tracker.presentation.controller;
 
+import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.Exercise;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.ExerciseService;
 import com.lyca2206.backend.personal.fitness.tracker.presentation.dto.ExerciseDTO;
 import lombok.AllArgsConstructor;
@@ -17,9 +18,11 @@ public class ExerciseController {
     @PostMapping
     public void createExercise(@RequestBody ExerciseDTO exerciseDTO) {
         exerciseService.createExercise(
-                exerciseDTO.name(),
-                exerciseDTO.measureUnit(),
-                exerciseDTO.caloriesPerUnit()
+                new Exercise(
+                        exerciseDTO.name(),
+                        exerciseDTO.measureUnit(),
+                        exerciseDTO.caloriesPerUnit()
+                )
         );
     }
 }
