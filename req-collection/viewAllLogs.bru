@@ -1,0 +1,11 @@
+meta {
+  name: viewAllLogs
+  type: http
+  seq: 10
+}
+
+get {
+  url: http://192.168.1.12:8080/api/log
+  body: none
+  auth: inherit
+}
