@@ -6,5 +6,6 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 public interface ExerciseEntityMapper {
-    Exercise ExerciseEntityToExercise(ExerciseEntity exerciseEntity);
+    Exercise exerciseEntityToExercise(ExerciseEntity exerciseEntity);
+    ExerciseEntity exerciseToExerciseEntity(Exercise exercise);
 }

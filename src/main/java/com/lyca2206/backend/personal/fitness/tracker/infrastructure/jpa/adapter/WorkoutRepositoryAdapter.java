@@ -25,13 +25,7 @@ public class WorkoutRepositoryAdapter implements WorkoutRepository {
 
     @Override
     public void save(Workout workout) {
-        WorkoutEntity workoutEntity = new WorkoutEntity();
-
-        workoutEntity.setName(workout.name());
-        workoutEntity.setDescription(workout.description());
-        workoutEntity.setWorkoutExercises(List.of());
-        workoutEntity.setNotes(workout.notes());
-
+        WorkoutEntity workoutEntity = workoutEntityMapper.workoutToWorkoutEntity(workout);
         workoutRepositoryJPA.save(workoutEntity);
     }
 

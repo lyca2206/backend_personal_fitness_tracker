@@ -19,25 +19,20 @@ public class ExerciseRepositoryAdapter implements ExerciseRepository {
     @Override
     public List<Exercise> findAll() {
         return exerciseRepositoryJPA.findAll().stream()
-                .map(exerciseEntityMapper::ExerciseEntityToExercise)
+                .map(exerciseEntityMapper::exerciseEntityToExercise)
                 .toList();
     }
 
     @Override
     public void save(Exercise exercise) {
-        ExerciseEntity exerciseEntity = new ExerciseEntity();
-
-        exerciseEntity.setName(exercise.name());
-        exerciseEntity.setMeasureUnit(exercise.measureUnit());
-        exerciseEntity.setCaloriesPerUnit(exercise.caloriesPerUnit());
-
+        ExerciseEntity exerciseEntity = exerciseEntityMapper.exerciseToExerciseEntity(exercise);
         exerciseRepositoryJPA.save(exerciseEntity);
     }
 
     @Override
     public Exercise findByName(String name) {
         ExerciseEntity exerciseEntity = exerciseRepositoryJPA.findByName(name);
-        return exerciseEntityMapper.ExerciseEntityToExercise(exerciseEntity);
+        return exerciseEntityMapper.exerciseEntityToExercise(exerciseEntity);
     }
 
     @Override
