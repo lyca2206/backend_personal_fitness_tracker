@@ -5,7 +5,7 @@ import com.lyca2206.backend.personal.fitness.tracker.application.domain.model.Lo
 import java.util.List;
 
 public interface LogService {
-    Log viewLog();
-    List<Log> viewLog(String id);
-    void createLog();
+    List<Log> viewLog();
+    Log viewLog(String id);
+    void createLog(Log log);
 }

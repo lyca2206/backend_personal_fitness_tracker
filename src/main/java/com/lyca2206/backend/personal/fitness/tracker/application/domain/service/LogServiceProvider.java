@@ -7,15 +7,15 @@ import java.util.List;
 
 public class LogServiceProvider implements LogService {
     @Override
-    public Log viewLog() {
-        return null;
-    }
-
-    @Override
-    public List<Log> viewLog(String id) {
+    public List<Log> viewLog() {
         return List.of();
     }
 
     @Override
-    public void createLog() {}
+    public Log viewLog(String id) {
+        return null;
+    }
+
+    @Override
+    public void createLog(Log log) {}
 }

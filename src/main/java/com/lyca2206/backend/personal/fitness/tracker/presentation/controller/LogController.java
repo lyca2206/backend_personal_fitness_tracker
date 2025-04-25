@@ -24,12 +24,12 @@ public class LogController {
     private final LogDTOMapper logDTOMapper;
 
     @GetMapping
-    public Log viewLog() {
+    public List<Log> viewLog() {
         return logService.viewLog();
     }
 
     @GetMapping("/{id}")
-    public List<Log> viewLog(String id) {
+    public Log viewLog(String id) {
         return logService.viewLog(id);
     }
 
@@ -37,8 +37,7 @@ public class LogController {
     public void createLog(@RequestBody LogDTO logDTO) {
         User user = getAuthenticatedUser();
         Log log = logDTOMapper.LogDTOToLog(logDTO, listSupplier, user);
-        //TODO.
-        System.out.println(log);
+        logService.createLog(log);
     }
 
     private User getAuthenticatedUser() {
