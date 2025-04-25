@@ -9,6 +9,7 @@ import com.lyca2206.backend.personal.fitness.tracker.application.domain.service.
 import com.lyca2206.backend.personal.fitness.tracker.application.domain.service.UserServiceProvider;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.api.WorkoutService;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.ExerciseRepository;
+import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.LogRepository;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.PasswordMatcherService;
 import com.lyca2206.backend.personal.fitness.tracker.application.port.spi.UserRepository;
 import com.lyca2206.backend.personal.fitness.tracker.configuration.utilities.KeyPairHolder;
@@ -42,8 +43,8 @@ public class BeanConfiguration {
     }
 
     @Bean
-    public LogService logService() {
-        return new LogServiceProvider();
+    public LogService logService(LogRepository logRepository) {
+        return new LogServiceProvider(logRepository);
     }
 
     @Bean

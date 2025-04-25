@@ -25,12 +25,14 @@ public class LogController {
 
     @GetMapping
     public List<Log> viewLog() {
-        return logService.viewLog();
+        User user = getAuthenticatedUser();
+        return logService.viewLog(user);
     }
 
-    @GetMapping("/{id}")
-    public Log viewLog(String id) {
-        return logService.viewLog(id);
+    @GetMapping("/{index}")
+    public Log viewLog(@PathVariable int index) {
+        User user = getAuthenticatedUser();
+        return logService.viewLog(user, index);
     }
 
     @PostMapping

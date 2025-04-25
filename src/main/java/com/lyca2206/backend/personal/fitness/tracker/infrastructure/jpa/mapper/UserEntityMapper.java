@@ -27,6 +27,10 @@ public abstract class UserEntityMapper {
 
     @Named("encode")
     public String encode(String password) {
-        return passwordEncoder.encode(password);
+        if (password != null) {
+            return passwordEncoder.encode(password);
+        } else {
+            return null;
+        }
     }
 }

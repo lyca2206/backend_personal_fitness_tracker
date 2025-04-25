@@ -34,6 +34,10 @@ public class UserServiceProvider implements UserService {
             throw new EmailAlreadyRegisteredException("The given email is already associated with an user");
         }
 
+        if (user.getPassword() == null) {
+            throw new RuntimeException("The given password must not be a null value");
+        }
+
         userRepository.save(user);
     }
 
